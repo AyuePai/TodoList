@@ -19,3 +19,17 @@ body {
   border-width: 1px 0;
   background: #666;
 }
+.inputArea{
+  background-color:white;
+  text-align:center;
+  padding:10px;
+}
+.btn{
+  background-color: #222;
+  color: #fff;
+  border:none;
+  padding: 5px;
+  padding-left:20px;
+  padding-right: 20px;
+  border-radius: 5px;
+}

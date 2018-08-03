@@ -1,22 +1,44 @@
-require('normalize.css/normalize.css');
-require('styles/App.css');
+import 'normalize.css/normalize.css';
+import 'styles/App.css';
 
 import React from 'react';
 
-let yeomanImage = require('../images/yeoman.png');
+//import yeomanImage from '../images/yeoman.png';
 
-class AppComponent extends React.Component {
+class TodoList extends React.Component {
+  constructor(props){
+    super(props);
+    this.state={
+      list: [],
+      inputValue:''
+    };
+    this.handleBtnClick=this.handleBtnClick.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
+  }
+  handleBtnClick(){
+    this.setState({list:[...this.state.list,this.state.inputValue]});
+  }
+  handleInputChange(e){
+    this.setState({inputValue:e.target.value});
+  }
   render() {
     return (
-      <div className="index">
-        <img src={yeomanImage} alt="Yeoman Generator" />
-        <div className="notice">Please edit <code>src/components/Main.js</code> to get started!</div>
+      <div>
+        <div className="inputArea">
+          <input value={this.state.input} onChange={this.handleInputChange} />
+          <button style={{'margin-left':'10px'}} className="btn" onClick={this.handleBtnClick}>添加</button>
+        </div>
+        <ul>
+          {this.state.list.map((item,index)=>{
+            return <li key={index}>{item}</li>
+          })}
+        </ul>
       </div>
     );
   }
 }
 
-AppComponent.defaultProps = {
+TodoList.defaultProps = {
 };
 
-export default AppComponent;
+export default TodoList;
